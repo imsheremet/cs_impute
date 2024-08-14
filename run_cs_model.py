@@ -32,7 +32,7 @@ def impute_cs(miss_idx, y):
     obj = cp.Minimize(cp.norm(xr,1))
     constr = [cp.norm(A@xr-y,2) <= eps]
     prob = cp.Problem(obj, constr)
-    result = prob.solve(solver=cp.CVXOPT, verbose=False)
+    result = prob.solve(solver=cp.CLARABEL, verbose=False)
 
     # calculate recovered signal
     sr = np.matmul(P,xr.value)
